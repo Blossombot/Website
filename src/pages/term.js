@@ -17,18 +17,16 @@ class TermPage extends Component {
         try {
             var data = await axios(`/api/v1/terms/${term}`);
         } catch (e) {
-            console.log(e.message);
-            console.log(e.status);
-            return this.setState({ err: { status: e.status, message: e.message } });
+            return this.setState({ err: { message: e.message } });
         }
 
         this.setState({ term: data.data })
     }
 
     render() {
-        if (this.state.err && this.state.err.status) {
-            var err = this.state.err;
-            if (err.status == 404) {
+        if (this.state.err && this.state.err.message) {
+            let err = this.state.err;
+            if (err.message.includes("404")) {
                 return (
                     <div className="App-contentContainer App-animate-fade-in">
                         <h1>Not Found</h1>
@@ -46,7 +44,6 @@ class TermPage extends Component {
         }
 
         var term = this.state.term;
-        console.log(term);
         if (!term) return null;
         document.title = `Blossom - ${term.names[0]}`
         var source = term.source.replace(url_regex, (match, ...args) => {
