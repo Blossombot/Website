@@ -48,6 +48,7 @@ class TermPage extends Component {
         var term = this.state.term;
         console.log(term);
         if (!term) return null;
+        document.title = `Blossom - ${term.names[0]}`
         var source = term.source.replace(url_regex, (match, ...args) => {
             if (match.endsWith(`)`)) {
                 match = match.slice(0, -1);
