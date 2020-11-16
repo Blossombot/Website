@@ -1,0 +1,9 @@
+{
+  "type": "link",
+  "version": "1.0",
+  "title": "Blossom Webapp",
+  "provider_name": "Blossom",
+  "thumbnail_url": "https://blossom.astrarche.dev/blossom.svg",
+  "thumbnail_width": 32,
+  "thumbnail_height": 32
+}

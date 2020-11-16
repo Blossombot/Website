@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Noto+Sans&display=swap');
+
+:root {
+    /* for cutting off long blocks of text */
+    --max-lines: 4;
+    --lh: 2em;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: calc(10px + 1vmin);
+    color: #201d1b;
+}
+
+.App-nav {
+    padding: 5px 0;
+}
+
+.App-navItem {
+    margin: 0 5px;
+}
+
+.App a {
+    color: #8dc3f2;
+}
+
+    .App a.active {
+        text-decoration: underline overline;
+    }
+
+.App-header {
+    font-family: 'Comfortaa', cursive;
+    height: 20vmin;
+    padding: 5vmin 0;
+    margin-bottom: 5vmin;
+    width: 100%;
+    background: #ffcade;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    .App-header img {
+        height: 100%;
+    }
+
+.App-searchForm {
+    width: 50%;
+    margin: 0;
+    position: relative;
+    top: -8vmin;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+}
+
+.App-searchBar, .App-searchButton {
+    font-size: inherit;
+    line-height: 5vmin;
+    height: 5vmin;
+    border: 1px solid #ffcade;
+    box-sizing: content-box;
+    padding: 0 10px;
+}
+
+.App-searchBar {
+    height: 5vmin;
+    padding: 0 5vmin 0 10px;
+    width: 100%;
+    border-top-left-radius: 5vmin;
+    border-bottom-left-radius: 5vmin;
+    border-right: 0px;
+}
+
+.App-searchButton {
+    height: 5vmin;
+    border-top-right-radius: 5vmin;
+    border-bottom-right-radius: 5vmin;
+    color: white;
+    background: #8dc3f2;
+    border-left: 0px;
+    cursor: pointer;
+}
+
+.App-searchResults {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.App-shareButton {
+    width: calc(12px + 1vmin);
+    height: auto;
+    cursor: pointer;
+}
+
+    .App-shareButton.copied {
+        fill: #542a3c;
+    }
+
+.App-result, .App-termCard {
+    /* Fix any overflow issues on sources */
+    min-width: 0;
+    width: 50%;
+    margin: 5px 0;
+    background: white;
+    border-radius: 3px;
+    border: solid 2px #ffcade;
+    min-height: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: center;
+}
+
+.App-termCard {
+    width: 90%;
+}
+
+.App-contentContainer {
+    min-width: 0;
+    width: 50%;
+    margin-bottom: 5px;
+    padding: 10px;
+    background: white;
+    border-radius: 3px;
+    border: dotted 2px #ffcade;
+    min-height: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.App-result h3, .App-result p,
+.App-termCard h3, .App-termCard p {
+    margin: 5px;
+}
+
+.App-result .title,
+.App-termCard .title {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+	truncate text
+*/
+.App-result p.definition,
+.App-termCard p.definition {
+    position: relative;
+    line-height: var(--lh);
+    max-height: calc(var(--lh) * var(--max-lines));
+    overflow: hidden;
+}
+
+    .App-result p.definition::after,
+    .App-termCard p.definition::after {
+        content: "";
+        position: absolute;
+        top: 6em;
+        right: 0;
+        width: 10%;
+        height: 2em;
+        background-image: linear-gradient(.25turn, transparent, white);
+    }
+
+/*
+	mostly to wrap long links
+	and color the ellipsis (...) correctly
+*/
+
+.App-result .source,
+.App-termCard .source {
+    display: flex;
+    flex-direction: row;
+}
+
+    .App-result .source > *,
+    .App-termCard .source > * {
+        margin: 0 5px;
+    }
+
+    .App-result .source strong,
+    .App-termCard .source strong {
+        margin-left: 0;
+    }
+
+    .App-result .source a,
+    .App-termCard .source a {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        flex: 1 1;
+    }
+
+.App-result .highlight,
+.App-termCard .highlight {
+    background: #ffcade;
+    padding: 0 5px;
+}
+
+.App-pageNav {
+    display: flex;
+    height: 5vmin;
+    border-radius: 3px;
+    padding: 0;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+    .App-pageNav li {
+        border-radius: 3px;
+        border: 2px solid #ffcade;
+        margin: 2px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        cursor: pointer;
+        color: #8dc3f2;
+        padding: 10px;
+        user-select: none;
+    }
+
+        /*.App-pageNav a {
+	text-decoration: none;
+	padding: 10px;
+	display: block;
+}*/
+
+        .App-pageNav li.current {
+            background: #ffcade;
+            color: #542a3c;
+        }
+
+.App-error {
+    padding: 10px;
+    text-align: center;
+    border-radius: 3px;
+    border: 2px solid #ffcade;
+    font-size: calc(12px + 1vmin);
+    font-weight: 700;
+    width: 50%;
+    color: #542a3c;
+    background: #ffcade;
+}
+
+code {
+    padding: 0 10px;
+    background: rgba(0, 0, 0, .25);
+    border-radius: 3px;
+}
+
+    code.App-example {
+        padding: 10px;
+        display: inline-block;
+    }
+
+@media (max-width: 800px) {
+    .App-result,
+    .App-searchForm,
+    .App-error,
+    .App-contentContainer {
+        width: 90%;
+    }
+}
+
+/*
+	Animations
+*/
+.App-animate-fade-in {
+    animation: fade-in 1.5s, climb-in 0.8s;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes climb-in {
+    from {
+        transform: translate(0, 50px);
+    }
+
+    to {
+        transform: translate(0, 0px);
+    }
+}
