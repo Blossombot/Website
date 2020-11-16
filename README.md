@@ -7,3 +7,4 @@
 ![](https://github.com/empyrosis/Blossom/workflows/Build/badge.svg)
 
 Blossom is a searchable glossary of plurality terms.
+ 
